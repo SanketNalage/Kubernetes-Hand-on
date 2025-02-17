@@ -1,0 +1,20 @@
+# this file is about the job where we can create the job which we are need.
+
+# commond to handle the job
+# kubectl apply -f job.yml -> creating the job
+# kubectl get job -n nginx -> check the job status
+# kubectl get pods -n nginx -o wide -> check the job status to pod connect
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: demo-job
+  namespace: nginx
+spec:
+  template:
+    spec:
+      containers:
+        - name: batch-container
+          image: busybox:latest
+          command: ["sh","-c","echo Hello sanket"]
+      restartPolicy: Never
