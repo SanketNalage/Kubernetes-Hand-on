@@ -1,0 +1,22 @@
+# This file is use to config the contorl-plane and working nodes
+# kind create cluster --name=sanket-cluster --config=config.yml
+#  kubectl cluster-info  ----> Display cluster information
+#  kubectl get nodes     ----> List all nodes in the cluster
+#  kubectl version        ----> Show client and server versions
+
+kind : Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+
+
+nodes: 
+- role: control-plane
+  image: kindest/node:v1.31.2
+- role: worker
+  image: kindest/node:v1.31.2
+- role: worker
+  image: kindest/node:v1.31.2
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 8080
+  - containerPort: 443
+    hostPort: 443

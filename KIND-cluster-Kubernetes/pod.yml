@@ -1,0 +1,23 @@
+# This file is use for the Creating the Pods
+
+#From this command you can create the pod and take info of pod
+#kubectl get pods                        # List all pods in the default namespace
+#kubectl get pods -n my-namespace        # List pods in a specific namespace
+#kubectl describe pod my-pod             # Show details of a specific pod
+#kubectl logs my-pod                     # View logs of a pod
+#kubectl exec -it my-pod -- /bin/sh      # Access a running pod
+#kubectl delete pod my-pod               # Delete a pod
+
+kind : Pod
+apiVersion: v1
+
+metadata: 
+ name: nginx-pod
+ namespace: nginx
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports: 
+    - containerPort: 80

@@ -1,0 +1,11 @@
+#This is file is use for the namespace creating.
+
+#Working with Namespaces from this command you also create the namespace
+# kubectl get namespaces  ----> List all namespaces
+# kubectl create namespace my-namespace ----> Create a new namespace
+# kubectl delete namespace my-namespace ----> Delete a namespace
+
+kind : Namespace
+apiVersion: v1
+metadata: 
+ name: nginx

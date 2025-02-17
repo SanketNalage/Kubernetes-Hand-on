@@ -1,0 +1,29 @@
+# This file is use for the deployment file to create the multiple pod and manage them.
+# kubectl get deployments                   # List all deployments
+# kubectl describe deployment my-deployment # Show details of a deployment
+# kubectl delete deployment my-deployment   # Delete a deployment
+# kubectl scale deployment my-deployment --replicas=3  # Scale a deployment
+# example : kubectl scale deployment/nginx-deployment -n nginx --replicas=5
+# kubectl rollout restart deployment my-deployment     # Restart a deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: nginx-deployment-pod
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
