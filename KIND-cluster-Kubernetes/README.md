@@ -31,7 +31,7 @@ echo "kind & kubectl installation complete."
 sudo apt-get install docker.io
 ```
 
-## 3. Check the version of Kubectl,KIND,Docker and see the docker is instll or not.
+## 3. Check the version of Kubectl,KIND,Docker and see docker is instll or not.
 ```
 kubectl version
 kind --version
@@ -39,7 +39,7 @@ docker --version
 docker ps
 ```
 
-## 4. If docker does the connect or not install then we can add he docker image to user.
+## 4. If docker does the connect or not install then we can add docker image to user.
 ```
 sudo usermod -aG docker $USER && newgrp docker
 ```
