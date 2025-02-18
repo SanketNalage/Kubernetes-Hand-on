@@ -1,0 +1,50 @@
+# this file is about the job where we can create the cronjob which we are need.
+
+# commond to handle the job
+# kubectl apply -f cronjob.yml -> creating the job
+# kubectl get cronjob -n nginx -> check the job status
+# kubectl get pods -n nginx -o wide -> check the job status to pod connect
+
+
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: min-cronjob
+  namespace: nginx
+spec:
+  schedule: "* * * * *"  # Runs every 1 minute
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: min-backup
+        spec:
+          containers:
+          - name: backup-container
+            image: busybox:latest
+            command:
+              - sh
+              - -c
+              - >
+                echo "Hello, Kubernetes CronJob!" ;
+                mkdir -p /backups &&
+                mkdir -p /data &&
+                cp -r /demo-data /backups &&
+                echo "Backup completed" ;
+            volumeMounts:
+              - name: data-volume
+                mountPath: /demo-data
+              - name: backups
+                mountPath: /backups
+          volumes:
+            - name: data-volume
+              hostPath:
+                path: /demo-data
+                type: DirectoryOrCreate
+            - name: backups
+              hostPath:
+                path: /backups
+                type: DirectoryOrCreate
+          restartPolicy: OnFailure
