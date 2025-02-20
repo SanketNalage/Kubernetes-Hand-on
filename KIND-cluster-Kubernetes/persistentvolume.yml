@@ -1,0 +1,21 @@
+# this is file for the persistent volume
+#kubectl delete pv/local-pv
+#kubectl apply -f persistentvolume.yml
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv
+  namespace: nginx
+  labels:
+    app: local
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/mnt/data"

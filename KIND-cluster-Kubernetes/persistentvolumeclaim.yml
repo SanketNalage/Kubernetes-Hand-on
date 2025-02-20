@@ -1,0 +1,17 @@
+# this is file for the persistent volume claim
+#kubectl delete pvc/local-pvc
+#kubectl apply -f persistentvolumeclaim.yml
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-pvc
+  namespace: nginx
+spec:
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

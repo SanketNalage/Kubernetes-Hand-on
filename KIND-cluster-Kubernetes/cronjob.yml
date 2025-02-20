@@ -6,7 +6,6 @@
 # kubectl get pods -n nginx -o wide -> check the job status to pod connect
 
 
-
 apiVersion: batch/v1
 kind: CronJob
 metadata:
