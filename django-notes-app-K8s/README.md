@@ -1,25 +1,37 @@
-# Simple Notes App
-This is a simple notes app built with React and Django.
+# Django Project with Kubernetes (KinD)
 
-## Requirements
-1. Python 3.9
-2. Node.js
-3. React
+This project demonstrates how to containerize a small Django application and deploy it to a Kubernetes cluster using **KinD** (Kubernetes in Docker).
+
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [KinD (Kubernetes in Docker)](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+
+---
 
 ## Installation
 1. Build the app
 ```
 docker build -t notes-app .
+docker images
+```
+2. Tag the create image in the docker hub
+```
+docker image tag notes-apps"latest sanketnalage/notes-app
+```
+3. Push the tag image to docker hub
+```
+docker push sanketnalage/notes-apps
 ```
 
-2. Run the app
+4. Run the app
 ```
 docker run -d -p 8000:8000 notes-app:latest
 ```
 
-## Nginx
 
-Install Nginx reverse proxy to make this application available
-
-`sudo apt-get update`
-`sudo apt install nginx`
