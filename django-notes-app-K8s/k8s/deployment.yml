@@ -1,0 +1,32 @@
+# This file is use for the deployment file to create the multiple pod and manage them.
+# kubectl get deployments                   # List all deployments
+# kubectl describe deployment my-deployment # Show details of a deployment
+# kubectl delete deployment my-deployment   # Delete a deployment
+# kubectl scale deployment my-deployment --replicas=3  # Scale a deployment
+# example : kubectl scale deployment/nginx-deployment -n nginx --replicas=5
+# kubectl rollout restart deployment my-deployment     # Restart a deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps-k8s-deployment
+  namespace: apps-k8s
+  labels:
+    app: apps-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apps-k8s
+  template:
+    metadata:
+      name: apps-k8s-pod
+      labels:
+        app: apps-k8s
+    spec:
+      containers:
+      - name: apps-k8s
+        image: sanketnalage/apps-k8s
+        ports:
+        - containerPort: 8000
+        

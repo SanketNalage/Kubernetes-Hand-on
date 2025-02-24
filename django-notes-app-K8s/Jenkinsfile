@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage("Clone Code"){
             steps{
-                git url: "https://github.com/LondheShubham153/django-notes-app.git", branch: "main"
+                git url: "https://github.com/SanketNalage/Kubernetes-Hand-on/tree/main/django-notes-app-K8s", branch: "main"
             }
         }
         stage("Build and Test"){
@@ -18,7 +18,7 @@ pipeline {
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                 sh "docker push ${env.dockerHubUser}/note-app-test-new:latest"
                 }
-            }
+            }   
         }
         stage("Deploy"){
             steps{
