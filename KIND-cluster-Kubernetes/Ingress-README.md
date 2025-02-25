@@ -102,7 +102,7 @@ kubectl apply -f ingress.yaml
 sudo -E kubectl port-forward service/nginx -n nginx 8080:80 --address=0.0.0.0
 ```
 
-## if you wich to see then navigated to [django-notes-app-K8s](https://github.com/SanketNalage/Kubernetes-Hand-on/tree/main/django-notes-app-K8s) /k8s folder the file is available of ingress.
+## if you wish to see then navigated to [django-notes-app-K8s](https://github.com/SanketNalage/Kubernetes-Hand-on/tree/main/django-notes-app-K8s) /k8s folder the file is available of ingress.
 
 ### Happy learning! 😊
 
