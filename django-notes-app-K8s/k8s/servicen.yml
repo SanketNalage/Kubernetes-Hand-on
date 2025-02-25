@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: services-notes-app
+  name: service-nginx
   namespace: nginx
 spec:
   selector:
-    app: notes-app
+    app: nginx
   ports:
     - protocol: TCP
-      port: 8000
-      targetPort: 8000
+      port: 80
+      targetPort: 80
   type: ClusterIP

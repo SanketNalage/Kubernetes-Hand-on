@@ -1,4 +1,11 @@
 kind : Namespace
 apiVersion: v1
-metadata: 
- name: apps-k8s
+metadata:
+  name: notes-app
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx
