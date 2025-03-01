@@ -12,7 +12,7 @@ def get_db_connection():
         dbname="todolist",       # Your database name
         user="youruser",         # Your PostgreSQL username
         password="yourpassword", # Your PostgreSQL password
-        host="localhost",        # Your database host
+        host="postgres",        # Your database host
         port="5432"              # Your database port
     )
     return conn
