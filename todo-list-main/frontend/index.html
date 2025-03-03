@@ -22,7 +22,7 @@
   </div>
 
   <script>
-    const apiUrl = 'http://flask-backend:5000/api/tasks';
+    const apiUrl = `${window.location.origin.replace("30001", "30000")}/api/tasks`;
 
     // Add a task
     document.getElementById('taskForm').addEventListener('submit', function (e) {

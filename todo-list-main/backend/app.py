@@ -1,19 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import psycopg2
+import psycopg2, os
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)  # Enable cross-origin requests
+CORS(app, resources={r"/api/*": {"origins": "*"}})  # Enable cross-origin requests
 
 # Database connection function
 def get_db_connection():
     conn = psycopg2.connect(
-        dbname="todolist",       # Your database name
-        user="youruser",         # Your PostgreSQL username
-        password="yourpassword", # Your PostgreSQL password
-        host="postgres",        # Your database host
-        port="5432"              # Your database port
+        dbname=os.getenv("POSTGRES_DB", "todolist"),
+        user=os.getenv("POSTGRES_USER", "youruser"),
+        password=os.getenv("POSTGRES_PASSWORD", "yourpassword"),
+        host=os.getenv("POSTGRES_HOST", "postgres"),  # Use service name
+        port="5432"
     )
     return conn
 
@@ -66,4 +66,4 @@ def update_task(id):
 
 # Run the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
