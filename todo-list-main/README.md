@@ -174,26 +174,4 @@ sudo -E kubectl port-forward svc/flask-backend 30000:5000
 ```
 ---
 
-## 📌 Project Structure
-📂 todo-app/
- ├── 📁 frontend/
- │   ├── index.html
- │   ├── Dockerfile
- │   
- │
- ├── 📁 backend/
- │   ├── app.py
- │   ├── requirements.txt
- │   └── Dockerfile
- │
- ├── 📁 k8s/
- │   ├── postgresql-deployment.yml
- │   ├── flask-deployment.yml
- │   ├── frontend-deployment.yml
- │   
- │
- ├── config.yml
- ├── README.md
- └── .gitignore
-
 🎉 **Congratulations! Your To-Do List app is now deployed on your KIND cluster!** 🎉
